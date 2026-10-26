@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">wstepDoRoomDB</string>
+    <string-array name="przedmioty">
+        <item>WF</item>
+        <item>plastyka</item>
+        <item>informatyka</item>
+        <item>matematyka</item>
+        <item>język polski</item>
+        <item>język angielski</item>
+        <item>programowanie</item>
+    </string-array>
 </resources>

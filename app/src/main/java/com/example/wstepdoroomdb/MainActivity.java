@@ -1,6 +1,10 @@
 package com.example.wstepdoroomdb;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +16,8 @@ import androidx.room.Room;
 public class MainActivity extends AppCompatActivity {
 
     SzkolaDatabase szkolaDatabase;
+    EditText editText;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,22 @@ public class MainActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-        szkolaDatabase.getNauczycielDao().wstawNauczycielaDoBazy(new Nauczyciel("Anna", "matematyka"));
+//        szkolaDatabase.getNauczycielDao().wstawNauczycielaDoBazy(new Nauczyciel("Anna", "matematyka"));
+
+        Button button = findViewById(R.id.button);
+        editText = findViewById(R.id.editTextText);
+        spinner = findViewById(R.id.spinner);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Nauczyciel nauczyciel = new Nauczyciel(
+                        editText.getText().toString(),
+                        spinner.getSelectedItem().toString()
+                );
+                szkolaDatabase.getNauczycielDao().wstawNauczycielaDoBazy(nauczyciel);
+            }
+        });
+
     }
 }
